@@ -1,19 +1,24 @@
-if len(nums) == 0:
+not_equal_to_val_count = 0
+        vals_not_equal_to_list = []
+        if len(nums) == 0:
             return 0
-        low = -1
-        high = len(nums)
         if len(nums) == 1:
-            if nums[low] == val:
+            if nums[0] == val:
+                del nums[0]
                 return 0
-            else: 
+            else:
                 return 1
-        while low < high:
-            low = low + 1
-            high = high - 1
-            if nums[low] == val:
-                del[nums[low]]
-                low -= 1
-                high -= 1
-            if nums[high] == val:
-                del[nums[high]]
-        return len(nums)
+        index = 0
+        for i in nums:
+            if i == val:
+                not_equal_to_val_count = not_equal_to_val_count + 1
+                del nums[index]  
+            else:
+                vals_not_equal_to_list.append(i)
+            index = index + 1
+
+        index = 0
+
+        for i in vals_not_equal_to_list:
+            nums[index] = i
+            index = index + 1
