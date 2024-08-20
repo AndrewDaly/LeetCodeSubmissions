@@ -4,12 +4,13 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
-        # make a new reference with nums values
+        # lol it is actually nlogn
+	# make a new reference with nums values
         working_array = nums
 
         # get a list of the unique elements in sorted order
         working_array = sorted(nums)
-
+	
         # now we go thru the nums array and look for elements that are duplicated
         duplicated_vals = []
         for i in working_array:
