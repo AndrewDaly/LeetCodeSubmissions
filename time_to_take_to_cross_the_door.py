@@ -26,9 +26,29 @@ class Entry_queue():
         self.entry_list = []
 
 class person()
-    def __init__(self, state, arrival_time):
+    def __init__(self, state, arrival_time, index):
         self.state = state
         self.arrival_time = arrival_time
+        self.index = index
+
+class door()
+    def __init__(self):
+        self.used_in_previous_second = False
+        self.used_in_previous_second_to_enter = False
+        self.used_in_previous_second_to_exit = False
+    def door_utilized_to_enter():
+        self.used_in_prvious_second = True
+        self.used_in_previous_second_to_enter = True
+    def door_utilized_to_exit():
+        self.used_in_prvious_second = True
+        self.used_in_previous_second_to_exit = True
+    def door_not_utilized_in_previous_second():
+        self.used_in_previous_second = False
+        self.used_in_previous_second_to_enter = False
+        self.used_in_previous_second_to_exit = False
+
+
+def process_queues(arrival_queue, exit_queue):
 
 
 class Solution(object):
@@ -81,7 +101,13 @@ class Solution(object):
                     # move to next iteration of the loop and do not increment the global clock
                     # the next arrival needs to be added to the queues before any action is taken
                     # because multiple people can arrive at the same time we need some check
-                    pass # will implement later
+                    # pass # will implement later
+                    # we already added the person to the relevant queues
+                    # so we can advance to the next look iteration
+                    continue
                 else:
                     # the next arrival is not at the same time, we can process the queues
+                    process_queues(entry_queue, exit_queue)
+                    global_clock.increment_clock_time()
+
                 
