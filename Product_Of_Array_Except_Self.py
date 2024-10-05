@@ -1,18 +1,26 @@
 class Solution(object):
     def productExceptSelf(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: List[int]
-        """
-        retval = []
-        product_of_all = 1
-        for i in nums:
-           product_of_all = i * product_of_all
-        for i in nums:
-            if i == 0:
-                retval.append(product_of_all)
-                continue
-            i_value = product_of_all / i
-            retval.append(i_value)
-        return retval
+        total_product = 1
+        zero_count = 0
         
+        for num in nums:
+            if num != 0:
+                total_product *= num
+            else:
+                zero_count += 1
+                
+        result = []
+        
+        if zero_count > 1:
+            return [0] * len(nums)
+        
+        for num in nums:
+            if num != 0:
+                if zero_count == 1:
+                    result.append(0)
+                else:
+                    result.append(total_product // num)
+            else:
+                result.append(total_product)
+        
+        return result
